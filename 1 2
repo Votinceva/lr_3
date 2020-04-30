@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int main()
+{
+int N = 10;
+
+while(true){
+int map[10][10] = {0};
+intx,y,i,j;
+intdir =0;
+intcount_ship = 0;
+
+while(count_ship<3){
+x=rand()%N;
+y=rand()%N;
+
+inttemp_x = x;
+inttemp_y = y;
+
+boolsetting_is_possible = 1;
+
+dir = rand()%4;
+
+for(i=0;i<5;i++){
+if ((x<0)||(y<0)||(x>=N)||(y>=N))
+{
+setting_is_possible = 0;
+break;
+}
+if ((map[x][y] == 1)||(map[x][y+1] == 1)||(map[x][y-1] == 1)||(map[x+1][y] == 1)||(map[x+1][y+1] == 1)||(map[x+1][y-1] == 1)||(map[x-1][y] == 1)||(map[x-1][y+1] == 1)||(map[x-1][y-1] == 1)){
+setting_is_possible = 0;
+break;
+}
+
+switch(dir)
+{
+case 0: x++;
+break;
+case 1: y++;
+break;
+case 2: x--;
+break;
+case 3: y--;
+break;
+}
+}
+
+
+if (setting_is_possible==1){
+x = temp_x;
+y = temp_y;
+for (i=0;i<5;i++){
+map[x][y] = 1;
+switch(dir){
+case 0: x++;
+break;
+case 1: y++;
+break;
+case 2: x--;
+break;
+case 3: y--;
+break;
+}
+}
+count_ship++;
+}
+}
+
+for (i=0; i<N;i++){
+for (j=0;j<N;j++){
+if(map[j][i]==0)
+{
+printf("-");
+}
+else{
+printf("1");
+}
+
+}printf("\n");
+}
+getch();
+system("cls");
+}
+
+system("pause");
+return 0;
+}
