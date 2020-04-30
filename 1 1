@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int main()
+{
+int N = 5;
+int map[5][5] = {0};
+
+intx,y,i,j;
+
+for (i=0; i<N; i++){
+x=rand()%N;
+y=rand()%N;
+map[x][y] = 1;
+}
+
+
+
+for (i=0; i<N;i++){
+for (j=0;j<N;j++){
+printf("%d", map[j][i]);
+}
+printf("%d\n");
+}
+
+while(true){
+printf("Vveditekoordinatyceli");
+printf("\n");
+scanf("%d", &x);
+scanf("%d", &y);
+
+if (map[x][y] == 1){
+printf("Popal");
+printf("\n");
+map[x][y] = 0;
+
+boolship_detect = false;
+
+for (i=0; i<N;i++){
+for (j=0;j<N;j++){
+if (map[i][j] == 1){
+ship_detect = true;
+break;
+}
+}
+if (ship_detect == true){
+break;
+}
+}
+if (ship_detect == false){
+printf("Pobeda!");
+break;
+}
+}
+else{
+printf("Promah");
+printf("\n");
+}
+}
+
+getch();
+return 0;
+}
